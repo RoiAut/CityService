@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --brown: #8D6E63;
-  --brown-dark: #5D4037;
-  --brown-light: #A1887F;
-  --bg-color: #FDFBF7;
-  --section-bg: #F5F0EB;
-  --card-bg: #FFFFFF;
-  --text-main: #3E2723;
-  --text-muted: #795548;
-  --border-color: #D7CCC8;
+  --brown: #E63946;
+  --brown-dark: #AD001D;
+  --brown-light: #FF4D5E;
+  --bg-color: #050505;
+  --section-bg: #0C0C0C;
+  --card-bg: #121212;
+  --text-main: #FFFFFF;
+  --text-muted: #888888;
+  --border-color: #333333;
   --white: #FFFFFF;
-  --gold: #FFB300;
+  --gold: #FFD166;
   
   --red: var(--brown);
   --red-dark: var(--brown-dark);
@@ -19,7 +19,7 @@
   --charcoal: var(--section-bg);
   --dark: var(--bg-color);
   --mid: var(--card-bg);
-  --steel: #EFEBE9;
+  --steel: #1E1E1E;
   --silver: var(--text-muted);
 }
 
@@ -28,7 +28,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
   background: var(--bg-color);
   color: var(--text-main);
   overflow-x: hidden;
@@ -44,8 +44,8 @@ nav {
   justify-content: space-between;
   padding: 0 5%;
   height: 70px;
-  background: rgba(253, 251, 247, 0.95);
-  border-bottom: 2px solid var(--brown);
+  background: rgba(5, 5, 5, 0.95);
+  border-bottom: 3px solid var(--brown);
   backdrop-filter: blur(10px);
 }
 
@@ -84,7 +84,7 @@ nav {
   text-decoration: none;
   background: var(--brown);
   padding: 10px 20px;
-  border-radius: 2px;
+  border-radius: 0;
   letter-spacing: 0.5px;
   transition: background 0.2s;
 }
@@ -109,18 +109,18 @@ nav {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(141, 110, 99, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(230, 57, 70, 0.1) 0%, transparent 70%),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 39px,
-      rgba(93, 64, 55, 0.03) 40px
+      rgba(255, 255, 255, 0.03) 40px
     ),
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 39px,
-      rgba(93, 64, 55, 0.03) 40px
+      rgba(255, 255, 255, 0.03) 40px
     );
 }
 
@@ -135,6 +135,7 @@ nav {
   padding: 6px 18px;
   margin-bottom: 30px;
   animation: fadeDown 0.8s ease forwards;
+  border-radius: 0;
 }
 
 .hero h1 {
@@ -181,7 +182,8 @@ nav {
   text-decoration: none;
   display: inline-block;
   transition: all 0.2s;
-  border-radius: 2px;
+  border-radius: 0;
+  border: 2px solid var(--brown);
 }
 
 .btn-primary:hover {
@@ -203,7 +205,7 @@ nav {
   text-decoration: none;
   display: inline-block;
   transition: all 0.2s;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 .btn-outline:hover {
@@ -293,12 +295,13 @@ section {
 
 .service-card {
   background: var(--card-bg);
-  padding: 40px 36px;
   position: relative;
   overflow: hidden;
   transition: all 0.3s;
   cursor: default;
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
 }
 
 .service-card::before {
@@ -309,6 +312,7 @@ section {
   width: 0;
   background: var(--brown);
   transition: width 0.4s ease;
+  z-index: 2;
 }
 
 .service-card:hover::before { width: 100%; }
@@ -317,6 +321,30 @@ section {
   background: var(--steel);
   transform: translateY(-4px);
   border-color: transparent;
+}
+
+.service-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.service-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-img {
+  transform: scale(1.05);
+}
+
+.service-content {
+  padding: 30px 36px 40px;
+  position: relative;
+  flex-grow: 1;
 }
 
 .service-icon {
@@ -370,13 +398,14 @@ section {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   padding: 28px 24px;
-  border-radius: 4px;
+  border-radius: 0;
+  border: 2px solid var(--border-color);
   transition: border-color 0.3s;
 }
 
 .why-card:hover {
   border-color: var(--brown);
-  box-shadow: 0 4px 12px rgba(93, 64, 55, 0.05);
+  box-shadow: none;
 }
 
 .why-icon {
@@ -425,13 +454,13 @@ section {
 .contact-icon-wrap {
   width: 48px;
   height: 48px;
-  background: var(--brown);
-  color: white;
-  border-radius: 2px;
+  background: rgba(230, 57, 70, 0.05);
+  border: 1px solid rgba(230, 57, 70, 0.2);
+  color: var(--brown);
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
   flex-shrink: 0;
 }
 
@@ -461,7 +490,7 @@ section {
   color: var(--white);
   text-decoration: none;
   padding: 14px 24px;
-  border-radius: 2px;
+  border-radius: 0;
   font-weight: 700;
   font-size: 16px;
   margin-bottom: 8px;
@@ -484,7 +513,7 @@ section {
   color: var(--white);
   text-decoration: none;
   padding: 14px 24px;
-  border-radius: 2px;
+  border-radius: 0;
   font-weight: 700;
   font-size: 14px;
   margin-top: 8px;
@@ -506,7 +535,7 @@ section {
 .schedule-item {
   background: var(--card-bg);
   padding: 18px 20px;
-  border-radius: 2px;
+  border-radius: 0;
   border-left: 3px solid var(--brown);
   border-top: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
@@ -535,9 +564,9 @@ section {
 .map-frame {
   width: 100%;
   height: 300px;
-  border-radius: 4px;
+  border-radius: 0;
   overflow: hidden;
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
   background: var(--card-bg);
   display: flex;
   align-items: center;
@@ -551,7 +580,7 @@ section {
   color: var(--white);
   text-decoration: none;
   padding: 14px 28px;
-  border-radius: 2px;
+  border-radius: 0;
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 1px;
@@ -580,50 +609,37 @@ section {
 
 .reviews-track-wrap {
   position: relative;
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  width: 100%;
 }
 
 .reviews-track {
   display: flex;
   gap: 20px;
-  width: max-content;
-  animation: scrollLeft 120s linear infinite;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
 }
 
-.reviews-track:hover { animation-play-state: paused; }
-
-.reviews-track-2 {
-  animation: scrollRight 100s linear infinite;
-  margin-top: 20px;
-}
-
-.reviews-track-2:hover { animation-play-state: paused; }
-
-@keyframes scrollLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes scrollRight {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+.reviews-track::-webkit-scrollbar {
+  display: none;
 }
 
 .review-card {
   background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border: 2px solid var(--border-color);
+  border-radius: 0;
   padding: 24px 28px;
   width: 320px;
   flex-shrink: 0;
   transition: border-color 0.3s;
+  scroll-snap-align: start;
 }
 
 .review-card:hover {
-  border-color: rgba(141, 110, 99, 0.4);
-  box-shadow: 0 4px 12px rgba(93, 64, 55, 0.05);
+  border-color: rgba(230, 57, 70, 0.6);
+  box-shadow: none;
 }
 
 .review-header {
@@ -636,7 +652,7 @@ section {
 .review-avatar {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -755,6 +771,32 @@ footer {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* SCROLL TOP BUTTON */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  animation: fadeUp 0.3s ease;
+}
+
+.scroll-top-btn:hover {
+  background: #c32733;
+  transform: translateY(-5px);
 }
 
 /* RESPONSIVE */
